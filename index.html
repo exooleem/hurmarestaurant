@@ -254,7 +254,7 @@ header {
     .menu-item img { height: 140px; }
     .info h3 { font-size: 12px; letter-spacing: 1px; }
     .info p { font-size: 7px; letter-spacing: 1px; }
-    .menu-items { grid-template-columns: 1fr; }
+    .menu-items { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
@@ -262,19 +262,19 @@ header {
 <body>
 <div class="container">
 <header>
-    <div class="top-text">Ресторан</div>
-    <div class="restaurant-logo">
-        <img src="лого.png" alt="Ресторан Хурма" loading="lazy">
-    </div>
+<div class="top-text">Ресторан</div>
+<div class="restaurant-logo">
+<img src="лого.png" alt="Ресторан Хурма" loading="lazy">
+</div>
 
-    <div class="search-container">
-        <input id="search" class="search-bar" type="text" placeholder="Поиск блюда..." aria-label="Поиск блюда">
-        <button id="clear-btn" title="Очистить">✖</button>
-    </div>
+<div class="search-container">
+<input id="search" class="search-bar" type="text" placeholder="Поиск блюда..." aria-label="Поиск блюда">
+<button id="clear-btn" title="Очистить">✖</button>
+</div>
 
-    <div class="contact-info">
-        пр-т Мохаммеда Али 2/5, Тел: +7 (928) 943-76-76
-    </div>
+<div class="contact-info">
+пр-т Мохаммеда Али 2/5, Тел: +7 (928) 943-76-76
+</div>
 </header>
 
 <!— САЛАТЫ —>
