@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ресторан Хурма</title>
+<link href="fonts.googleapis.com/css2?famil..." rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; padding: 0; }
+
+/* Фиксированный фон через псевдоэлемент */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("фон.jpg") center center no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* Основной стиль сайта */
+body {
+    color: #fff; /* Цвет текста */
+    font-family: "Roboto", "Helvetica", Arial, sans-serif; /* Основной шрифт */
+    font-size: 16px; /* Размер текста по умолчанию */
+    line-height: 1.5; /* Межстрочный интервал */
+    background-color: #fff; /* Фоновый цвет сайта */
+    margin: 0;
+    padding: 0;
+}
+
+/* Все заголовки и параграфы на сайте */
+h1, h2, h3, h4, h5, h6, p, div, span, article, section, li {
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #fff;
+}
+
+/* Стиль для меню */
+.menu-item h3 {
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #fff;
+    font-size: 18px; /* Размер названия блюда */
+    margin: 0 0 5px 0;
+}
+
+.menu-item p {
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #fff;
+    font-size: 14px; /* Размер описания блюда */
+    margin: 0;
+}
+
+/* Секции меню */
+.section-title {
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Дополнительно для ссылок и кнопок */
+a, button {
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #fff;
+}
+.container {
+width: 100%;
+max-width: 900px;
+margin: 0 auto;
+padding: 20px 16px;
+}
+
+header {
+text-align: center;
+margin-bottom: 32px;
+}
+.top-text {
+font-size: 8px;
+font-weight: 300;
+text-transform: uppercase;
+letter-spacing: 8px;
+opacity: 0.9;
+margin-bottom: 6px;
+margin-top: -10px;
+}
+
+/* ЛОГОТИП */
+.restaurant-logo img {
+max-width: 320px;
+height: auto;
+display: block;
+margin: 0 auto 16px;
+}
+.contact-info {
+text-align: center;
+margin-bottom: 32px;
+font-size: 14px;
+letter-spacing: 0.5px;
+opacity: 0.9;
+}
+.search-container {
+width: 100%;
+max-width: 480px;
+margin: 0 auto 16px;
+position: relative;
+}
+.search-bar {
+width: 100%;
+padding: 10px 36px 10px 14px;
+border-radius: 30px;
+border: 1px solid rgba(255,255,255,0.12);
+background: rgba(0,0,0,0.4);
+color: #fff;
+font-size: 16px;
+letter-spacing: 0.5px;
+outline: none;
+}
+.search-bar::placeholder { color: rgba(255,255,255,0.6); }
+#clear-btn {
+position: absolute;
+right: 12px;
+top: 50%;
+transform: translateY(-50%);
+font-size: 18px;
+color: #fff;
+background: none;
+border: none;
+cursor: pointer;
+display: none;
+}
+/* Секции */
+.section { padding: 26px 0; text-align: center; }
+.section-title {
+font-family: "Playfair Display", serif;
+font-size: 20px;
+margin-bottom: 14px;
+font-weight: 600;
+letter-spacing: 1.5px;
+}
+
+.menu-items {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+justify-items: center;
+width: 100%;
+}
+
+.menu-item {
+width: 100%;
+max-width: 400px;
+background: rgba(0,0,0,0.4);
+border: 1px solid rgba(200,169,81,0.2);
+border-radius: 16px;
+overflow: hidden;
+box-shadow: 0 10px 28px rgba(0,0,0,0.3);
+transition: transform 0.25s ease, box-shadow 0.25s ease;
+display: flex;
+flex-direction: column;
+}
+.menu-item:hover {
+transform: translateY(-6px);
+box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+.menu-item img {
+width: 100%;
+height: 180px;
+object-fit: cover;
+border-radius: 12px 12px 0 0;
+}
+.info {
+padding: 12px 16px;
+display: flex;
+flex-direction: column;
+gap: 2px;
+text-align: left;
+}
+.info h3 {
+margin: 0;
+font-family: "Playfair Display", serif;
+font-size: 14px;
+letter-spacing: 1px;
+color: #fff;
+}
+.info p {
+margin: 0;
+font-size: 8px;
+letter-spacing: 1px;
+color: rgba(255,255,255,0.85);
+line-height: 1.2;
+}
+
+/* Кнопка "Наверх" */
+#toTopBtn {
+display: none;
+position: fixed;
+bottom: 40px;
+right: 30px;
+z-index: 99;
+width: 50px;
+height: 50px;
+font-size: 24px;
+background-color: rgba(0,0,0,0.6);
+color: #fff;
+border: none;
+border-radius: 50%;
+cursor: pointer;
+transition: background-color 0.3s;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 0;
+}
+
+#toTopBtn:hover {
+background-color: rgba(0,0,0,0.6); 
+}
+
+/* АДАПТИВ */
+max-width: 480px {
+.restaurant-logo img { max-width: 180px; }
+.section-title { font-size: 18px; }
+.menu-item img { height: 140px; }
+.info h3 { font-size: 12px; letter-spacing: 1px; }
+.info p { font-size: 7px; letter-spacing: 1px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="top-text">Ресторан</div>
+<div class="restaurant-logo">
+<img src="лого.png" alt="Ресторан Хурма">
+</div>
+<div class="search-container">
+<input id="search" class="search-bar" type="text" placeholder="Поиск блюда..." aria-label="Поиск блюда">
+<button id="clear-btn" title="Очистить">✖</button>
+</div>
+<div class="contact-info">
+пр-т Мохаммеда Али 2/5, Тел: +7 (928) 943-76-76
+</div>
+</header>
+
+<!— САЛАТЫ —>
+<section class="section">
+<div class="section-title">САЛАТЫ</div>
+<div class="menu-items">
+
+<article class="menu-item" data-name="салат грибной" data-desc="грибы, горох, лук зеленый, маринованный огурец">
+<img src="menu/1.jpg" alt="Салат «Грибной»">
+<div class="info">
+<h3>Салат «Грибной»</h3>
+<p>Грибы, горох, лук зеленый, маринованный огурец</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат греческий" data-desc="помидор, огурец, болгарский перец, лист салата, сыр Фета, оливки, лук">
+<img src="menu/2.jpg" alt="Салат «Греческий»">
+<div class="info">
+<h3>Салат «Греческий»</h3>
+<p>Помидор, огурец, болгарский перец, лист салата, сыр Фета, оливки, лук</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат княжеский" data-desc="Грибы, картофель, лист салата, курица, маринованный огурец, сыр, орех, яйцо">
+<img src="menu/3.jpg" alt="Салат «Княжеский»">
+<div class="info">
+<h3>Салат «Княжеский»</h3>
+<p>Грибы, картофель, лист салата, курица, маринованный огурец, сыр, орех, яйцо</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат крабовый" data-desc="Рис, крабовые палочки, огурец, кукуруза">
+<img src="menu/4.jpg" alt="Салат «Крабовый»">
+<div class="info">
+<h3>Салат «Крабовый»</h3>
+<p>Рис, крабовые палочки, огурец, кукуруза</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат оливье" data-desc="Говядина, картофель, морковь, горох, яйцо, огурец">
+<img src="menu/5.jpg" alt="Салат «Оливье»">
+<div class="info">
+<h3>Салат «Оливье»</h3>
+<p>Говядина, картофель, морковь, горох, яйцо, огурец</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат свежий" data-desc="Помидор, огурец, лук, болгарский перец, зелень, заправка по выбору">
+<img src="menu/6.jpg" alt="Салат «Свежий»">
+<div class="info">
+<h3>Салат «Свежий»</h3>
+<p>Помидор, огурец, лук, болгарский перец, зелень, заправка по выбору</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат весна" data-desc="Микс салат, черри, креветка, клементе, чеснок, орех кедровый, горчица французская">
+<img src="menu/7.jpg" alt="Салат «Весна»">
+<div class="info">
+<h3>Салат «Весна»</h3>
+<p>Микс салат, черри, креветка, клементе, чеснок, орех кедровый, горчица французская</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="маринованная нарезка" data-desc="Капуста, перец, помидор красный и зеленый, огурец, чеснок, морковь">
+<img src="menu/8.jpg" alt="Маринованная нарезка">
+<div class="info">
+<h3>Маринованная нарезка</h3>
+<p>Капуста, перец, помидор красный и зеленый, огурец, чеснок, морковь</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат зеленый" data-desc="Микс салат, авокадо, лук зеленый, огурец, брокколи, шпинат">
+<img src="menu/9.jpg" alt="Салат «Зеленый»">
+<div class="info">
+<h3>Салат «Зеленый»</h3>
+<p>Микс салат, авокадо, лук зеленый, огурец, брокколи, шпинат</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат океан" data-desc="Руккола, авокадо, кедровые орехи, лосось, лимон, французская горчица">
+<img src="menu/10.jpg" alt="Салат «Океан»">
+<div class="info">
+<h3>Салат «Океан»</h3>
+<p>Руккола, авокадо, кедровые орехи, лосось, лимон, французская горчица</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="фруктовый салат" data-desc="Банан, ананас, груша, яблоко, виноград, апельсин, киви">
+<img src="menu/11.jpg" alt="Фруктовый салат">
+<div class="info">
+<h3>Фруктовый салат</h3>
+<p>Банан, ананас, груша, яблоко, виноград, апельсин, киви</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат цезарь с креветкой" data-desc="Микс салат, огурец, креветка, черри, пармезан, гренки">
+<img src="menu/12.jpg" alt="Салат «Цезарь с креветкой»">
+<div class="info">
+<h3>Салат «Цезарь с креветкой»</h3>
+<p>Микс салат, огурец, креветка, черри, пармезан, гренки</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат цезарь с курицей" data-desc="Микс салат, огурец, курица, черри, пармезан, гренки">
+<img src="menu/13.jpg" alt="Салат «Цезарь с курицей»">
+<div class="info">
+<h3>Салат «Цезарь с курицей»</h3>
+<p>Микс салат, огурец, курица, черри, пармезан, гренки</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="фруктовая нарезка большая" data-desc="Ананас, груша, апельсин, виноград, банан, киви">
+<img src="menu/14.jpg" alt="Фруктовая нарезка «Большая»">
+<div class="info">
+<h3>Фруктовая нарезка «Большая»</h3>
+<p>Ананас, груша, апельсин, виноград, банан, киви</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="фруктовая нарезка средняя" data-desc="Ананас, груша, апельсин, виноград, банан, киви">
+<img src="menu/15.jpg" alt="Фруктовая нарезка «Средняя»">
+<div class="info">
+<h3>Фруктовая нарезка «Средняя»</h3>
+<p>Ананас, груша, апельсин, виноград, банан, киви</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="овощная нарезка большая" data-desc="Огурец, помидор, болгарский перец, лук, зелень, оливки">
+<img src="menu/16.jpg" alt="Овощная нарезка «Большая»">
+<div class="info">
+<h3>Овощная нарезка «Большая»</h3>
+<p>Огурец, помидор, болгарский перец, лук, зелень, оливки</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="овощная нарезка средняя" data-desc="Огурец, помидор, болгарский перец, лук, зелень, оливки">
+<img src="menu/17.jpg" alt="Овощная нарезка «Средняя»">
+<div class="info">
+<h3>Овощная нарезка «Средняя»</h3>
+<p>Огурец, помидор, болгарский перец, лук, зелень, оливки</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат буратто" data-desc="Сыр буратто, розовый помидор, микс салат, песто, бальзамический соус">
+<img src="menu/18.jpg" alt="Салат «Буратто»">
+<div class="info">
+<h3>Салат «Буратто»</h3>
+<p>Сыр буратто, розовый помидор, микс салат, песто, бальзамический соус</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат капрезе" data-desc="Сыр капрезе, розовый помидор, микс салат, песто, бальзамический соус">
+<img src="menu/19.jpg" alt="Салат «Капрезе»">
+<div class="info">
+<h3>Салат «Капрезе»</h3>
+<p>Сыр капрезе, розовый помидор, микс салат, песто, бальзамический соус</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="сырное ассорти" data-desc="Разновидности сыра">
+<img src="menu/20.jpg" alt="Сырное ассорти">
+<div class="info">
+<h3>Сырное ассорти</h3>
+<p>Разновидности сыра</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="фирменный салат хурма" data-desc="Микс салат, говядина, черри, баклажан, хурма, яйцо">
+<img src="menu/21.jpg" alt="Фирменный салат «Хурма»">
+<div class="info">
+<h3>Фирменный салат «Хурма»</h3>
+<p>Микс салат, говядина, черри, баклажан, хурма, яйцо</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат теплый" data-desc="Грибы, курица, болгарский перец, лук, пармезан">
+<img src="menu/22.jpg" alt="Салат «Теплый»">
+<div class="info">
+<h3>Салат «Теплый»</h3>
+<p>Грибы, курица, болгарский перец, лук, пармезан</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат с баклажаном" data-desc="Хрустящий баклажан, черри, кинза, зелень, соус унаги">
+<img src="menu/23.jpg" alt="Салат с баклажаном">
+<div class="info">
+<h3>Салат с баклажаном</h3>
+<p>Хрустящий баклажан, черри, кинза, зелень, соус унаги</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат тифлис" data-desc="Говядина, фасоль, болгарский перец, лук, грецкий орех, кинза">
+<img src="menu/24.jpg" alt="Салат «Тифлис»">
+<div class="info">
+<h3>Салат «Тифлис»</h3>
+<p>Говядина, фасоль, болгарский перец, лук, грецкий орех, кинза</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат свекла с черносливом" data-desc="Свекла, чернослив, грецкий орех">
+<img src="menu/25.jpg" alt="Салат «Свекла с черносливом»">
+<div class="info">
+<h3>Салат «Свекла с черносливом»</h3>
+<p>Свекла, чернослив, грецкий орех</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат ряба" data-desc="Майонез, чеснок, огурец, кукуруза, куриная грудка, фасоль, сухари">
+<img src="menu/26.jpg" alt="Салат «Ряба»">
+<div class="info">
+<h3>Салат «Ряба»</h3>
+<p>Майонез, чеснок, огурец, кукуруза, куриная грудка, фасоль, сухари</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат алина" data-desc="Фасоль, рис, кукуруза, яйцо, лук, огурец, майонез">
+<img src="menu/27.jpg" alt="Салат «Алина»">
+<div class="info">
+<h3>Салат «Алина»</h3>
+<p>Фасоль, рис, кукуруза, яйцо, лук, огурец, майонез</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат солла" data-desc="Помидор, лук, перепелиное яйцо, микс зелени">
+<img src="menu/28.jpg" alt="Салат «Солла»">
+<div class="info">
+<h3>Салат «Солла»</h3>
+<p>Помидор, лук, перепелиное яйцо, микс зелени</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат эдита" data-desc="Манго, авокадо, креветки, черри, руккола">
+<img src="menu/29.jpg" alt="Салат «Эдита»">
+<div class="info">
+<h3>Салат «Эдита»</h3>
+<p>Манго, авокадо, креветки, черри, руккола</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат хеда" data-desc="Гранат, пекинка, ананас, грецкий орех, пармезан, майонез">
+<img src="menu/30.jpg" alt="Салат «Хеда»">
+<div class="info">
+<h3>Салат «Хеда»</h3>
+<p>Гранат, пекинка, ананас, грецкий орех, пармезан, майонез</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат гроза" data-desc="Говядина, фасоль, шампиньоны, корнишоны, опята, шпинат, кинза, лук зеленый, заправка">
+<img src="menu/31.jpg" alt="Салат «Гроза»">
+<div class="info">
+<h3>Салат «Гроза»</h3>
+<p>Говядина, фасоль, шампиньоны, корнишоны, опята, шпинат, кинза, лук зеленый, заправка</p>
+</div>
+</article>
+
+</div>
+</section>
+
+<!— СУПЫ —>
+<section class="section">
+<div class="section-title">СУПЫ</div>
+<div class="menu-items">
+
+<article class="menu-item" data-name="борщ" data-desc="Украинский борщ">
+<img src="menu/32.jpg" alt="Борщ (Украинский)">
+<div class="info">
+<h3>Борщ (Украинский)</h3>
+<p>Украинский борщ</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="грибной суп-пюре" data-desc="...............">
+<img src="menu/33.jpg" alt="Грибной суп-пюре">
+<div class="info">
+<h3>Грибной суп-пюре</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="суп-харчо из телятины" data-desc=".................">
+<img src="menu/34.jpg" alt="Суп-харчо из телятины">
+<div class="info">
+<h3>Суп-харчо из телятины</h3>
+<p>.................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="том-ям" data-desc="....................">
+<img src="menu/35.jpg" alt="Том-Ям">
+<div class="info">
+<h3>Том-Ям</h3>
+<p>....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="лагман" data-desc="...............">
+<img src="menu/36.jpg" alt="Лагман">
+<div class="info">
+<h3>Лагман</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="шурпа из баранины" data-desc="..................">
+<img src="menu/37.jpg" alt="Шурпа из баранины">
+<div class="info">
+<h3>Шурпа из баранины</h3>
+<p>..................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="шурпа из говядины" data-desc="..................">
+<img src="menu/38.jpg" alt="Шурпа из говядины">
+<div class="info">
+<h3>Шурпа из говядины</h3>
+<p>..................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="куриный суп" data-desc="..........................">
+<img src="menu/39.jpg" alt="Куриный суп">
+<div class="info">
+<h3>Куриный суп</h3>
+<p>..........................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="фасолевый суп" data-desc="....................">
+<img src="menu/40.jpg" alt="Фасолевый суп">
+<div class="info">
+<h3>Фасолевый суп</h3>
+<p>....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="чечевичный суп" data-desc="....................">
+<img src="menu/41.jpg" alt="Чечевичный суп">
+<div class="info">
+<h3>Чечевичный суп</h3>
+<p>....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="суп с креветками" data-desc="...................">
+<img src="menu/42.jpg" alt="Суп с креветками">
+<div class="info">
+<h3>Суп с креветками</h3>
+<p>...................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="уха" data-desc="....................">
+<img src="menu/43.jpg" alt="Уха">
+<div class="info">
+<h3>Уха</h3>
+<p>....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="ух-чек" data-desc="Лосось, брокколи, черри, картофель, лук, морковь">
+<img src="menu/44.jpg" alt="Ух-Чек">
+<div class="info">
+<h3>Ух-Чек</h3>
+<p>Лосось, брокколи, черри, картофель, лук, морковь</p>
+</div>
+</article>
+
+</div>
+</section>
+
+<!— СПАГЕТТИ —>
+<section class="section">
+<div class="section-title">СПАГЕТТИ</div>
+<div class="menu-items">
+
+<article class="menu-item" data-name="спагетти с морепродуктами в томатном соусе" data-desc="..................">
+<img src="menu/45.jpg" alt="Спагетти с морепродуктами в томатном соусе">
+<div class="info">
+<h3>Спагетти с морепродуктами в томатном соусе</h3>
+<p>..................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="спагетти от шефа" data-desc=".....................">
+<img src="menu/46.jpg" alt="Спагетти от шефа">
+<div class="info">
+<h3>Спагетти от шефа</h3>
+<p>.....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="спагетти с соусом из фисташек и лососем" data-desc=".................">
+<img src="menu/47.jpg" alt="Спагетти с соусом из фисташек и лососем">
+<div class="info">
+<h3>Спагетти с соусом из фисташек и лососем</h3>
+<p>.................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="фетучини с лососем и брокколи в сливочном соусе" data-desc="................">
+<img src="menu/48.jpg" alt="Фетучини с лососем и брокколи в сливочном соусе">
+<div class="info">
+<h3>Фетучини с лососем и брокколи в сливочном соусе</h3>
+<p>................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="фетучини с креветками в сливочном соусе" data-desc="..................">
+<img src="menu/49.jpg" alt="Фетучини с креветками в сливочном соусе">
+<div class="info">
+<h3>Фетучини с креветками в сливочном соусе</h3>
+<p>..................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="фетучини с курицей и грибами в сливочном соусе" data-desc="..................">
+<img src="menu/50.jpg" alt="Фетучини с курицей и грибами в сливочном соусе">
+<div class="info">
+<h3>Фетучини с курицей и грибами в сливочном соусе</h3>
+<p>..................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="фетучини с лососем и красной икрой в сливочном соусе" data-desc="......................">
+<img src="menu/51.jpg" alt="Фетучини с лососем и красной икрой в сливочном соусе">
+<div class="info">
+<h3>Фетучини с лососем и красной икрой в сливочном соусе</h3>
+<p>......................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="удон с морепродуктами" data-desc="..................">
+<img src="menu/52.jpg" alt="Удон с морепродуктами">
+<div class="info">
+<h3>Удон с морепродуктами</h3>
+<p>..................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="удон с курицей" data-desc="....................">
+<img src="menu/53.jpg" alt="Удон с курицей">
+<div class="info">
+<h3>Удон с курицей</h3>
+<p>....................</p>
+</div>
+</article>
+
+</div>
+</section>
+
+<!— ВТОРЫЕ БЛЮДА —>
+<section class="section">
+<div class="section-title">ВТОРЫЕ БЛЮДА</div>
+<div class="menu-items">
+
+<article class="menu-item" data-name="азу из телятины" data-desc="Говядина, грибы, болгарский перец, лук, помидор, маринованный огурец">
+<img src="menu/54.jpg" alt="Азу из телятины">
+<div class="info">
+<h3>«Азу» из телятины</h3>
+<p>Говядина, грибы, болгарский перец, лук, помидор, маринованный огурец</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="говяжья отбивная" data-desc="....................">
+<img src="menu/55.jpg" alt="Говяжья отбивная">
+<div class="info">
+<h3>Говяжья отбивная</h3>
+<p>....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="жаркое по-домашнему" data-desc="Говядина, картофель, лук, помидор">
+<img src="menu/56.jpg" alt="Жаркое по-домашнему">
+<div class="info">
+<h3>Жаркое по-домашнему</h3>
+<p>Говядина, картофель, лук, помидор</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="жаркое на сковороде" data-desc="Говядина, лук, картофель, болгарский перец, помидор, айсберг">
+<img src="menu/57.jpg" alt="Жаркое на сковороде">
+<div class="info">
+<h3>Жаркое на сковороде</h3>
+<p>Говядина, лук, картофель, болгарский перец, помидор, айсберг</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="куриная отбивная" data-desc="...................">
+<img src="menu/58.jpg" alt="Куриная отбивная">
+<div class="info">
+<h3>Куриная отбивная</h3>
+<p>...................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="курица в укропном соусе" data-desc="................">
+<img src="menu/59.jpg" alt="Курица в укропном соусе">
+<div class="info">
+<h3>Курица в укропном соусе</h3>
+<p>................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="куриные котлеты с ажурным блинчиком из цукини" data-desc="Курица, лук, цукини, булгур, мацони, чеснок, майонез">
+<img src="menu/60.jpg" alt="Куриные котлеты с ажурным блинчиком из цукини">
+<div class="info">
+<h3>Куриные котлеты с ажурным блинчиком из цукини</h3>
+<p>Курица, лук, цукини, булгур, мацони, чеснок, майонез</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="курица по-французски" data-desc="..................">
+<img src="menu/61.jpg" alt="Курица по-французски">
+<div class="info">
+<h3>Курица по-французски</h3>
+<p>..................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="курица в соусе том-ям" data-desc=".................">
+<img src="menu/62.jpg" alt="Курица в соусе том-ям">
+<div class="info">
+<h3>Курица в соусе Том-Ям</h3>
+<p>.................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="курица по-арабски" data-desc="Курица, грецкий орех, пармезан, сухари">
+<img src="menu/63.jpg" alt="Курица по-арабски">
+<div class="info">
+<h3>Курица по-арабски</h3>
+<p>Курица, грецкий орех, пармезан, сухари</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="курица с грибами и брокколи в сливочном соусе" data-desc=".............">
+<img src="menu/64.jpg" alt="Курица с грибами и брокколи в сливочном соусе">
+<div class="info">
+<h3>Курица с грибами и брокколи в сливочном соусе</h3>
+<p>.............</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="блины с курицей и грибами" data-desc="..............">
+<img src="menu/65.jpg" alt="Блины с курицей и грибами">
+<div class="info">
+<h3>Блины с курицей и грибами</h3>
+<p>..............</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="мясо по-персидски" data-desc="Ломти говядины, картофель, лук, помидор">
+<img src="menu/66.jpg" alt="Мясо по-персидски">
+<div class="info">
+<h3>Мясо по-персидски</h3>
+<p>Ломти говядины, картофель, лук, помидор</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="мясо по-тайски" data-desc="Телятина, болгарский перец, грибы, огурец, лук, спаси соус, кунжут">
+<img src="menu/67.jpg" alt="Мясо по-тайски">
+<div class="info">
+<h3>Мясо по-тайски</h3>
+<p>Телятина, болгарский перец, грибы, огурец, лук, спаси соус, кунжут</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="мясо по-турецки" data-desc="Говядина, лук, болгарский перец, кабачок, баклажан, помидор">
+<img src="menu/68.jpg" alt="Мясо по-турецки">
+<div class="info">
+<h3>Мясо по-турецки</h3>
+<p>Говядина, лук, болгарский перец, кабачок, баклажан, помидор</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="мясо по-французски" data-desc="................">
+<img src="menu/69.jpg" alt="Мясо по-французски">
+<div class="info">
+<h3>Мясо по-французски</h3>
+<p>................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="мясо по-швейцарски" data-desc="Говядина в сливочном соусе, лук, грибы, грецкий орех">
+<img src="menu/70.jpg" alt="Мясо по-швейцарски">
+<div class="info">
+<h3>Мясо по-швейцарски</h3>
+<p>Говядина в сливочном соусе, лук, грибы, грецкий орех</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="мусака по-турецки" data-desc="Баклажановые рулетики запеченные в печи">
+<img src="menu/71.jpg" alt="Мусака по-турецки">
+<div class="info">
+<h3>Мусака по-турецки</h3>
+<p>Баклажановые рулетики запеченные в печи</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="бефстроганов из телятины" data-desc="...............">
+<img src="menu/72.jpg" alt="Бефстроганов из телятины">
+<div class="info">
+<h3>Бефстроганов из телятины</h3>
+<p>...............</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="говяжья вырезка под грибным соусом" data-desc="Говядина, грибы, сливки, лук, брокколи, цветная капуста">
+<img src="menu/73.jpg" alt="Говяжья вырезка под грибным соусом">
+<div class="info">
+<h3>Говяжья вырезка под грибным соусом</h3>
+<p>Говядина, грибы, сливки, лук, брокколи, цветная капуста</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="плов узбекский" data-desc=".....................">
+<img src="menu/74.jpg" alt="Плов узбекский">
+<div class="info">
+<h3>Плов узбекский</h3>
+<p>.....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="печень по-домашнему" data-desc="Печень, лук, специи">
+<img src="menu/75.jpg" alt="Печень по-домашнему">
+<div class="info">
+<h3>Печень по-домашнему</h3>
+<p>Печень, лук, специи</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="еда горцев" data-desc="Говяжий язык, молодой картофель, аджика, чеснок, зелень">
+<img src="menu/76.jpg" alt="Еда горцев">
+<div class="info">
+<h3>Еда горцев</h3>
+<p>Говяжий язык, молодой картофель, аджика, чеснок, зелень</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="маклюба" data-desc="Рис, говядина, лук, баклажан">
+<img src="menu/77.jpg" alt="Маклюба">
+<div class="info">
+<h3>Маклюба</h3>
+<p>Рис, говядина, лук, баклажан</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="бризоль" data-desc="Говядина, яйцо, помидор, огурец, майонез">
+<img src="menu/78.jpg" alt="Бризоль">
+<div class="info">
+<h3>Бризоль</h3>
+<p>Говядина, яйцо, помидор, огурец, майонез</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="дорадо аква-паци" data-desc="Дорадо запеченный с картофелем, помидорами и оливками">
+<img src="menu/79.jpg" alt="Дорадо Аква-Паци">
+<div class="info">
+<h3>Дорадо Аква-Паци</h3>
+<p>Дорадо запеченный с картофелем, помидорами и оливками</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="сибас запеченный в печи с овощами" data-desc=".............">
+<img src="menu/80.jpg" alt="Сибас запеченный в печи с овощами">
+<div class="info">
+<h3>Сибас запеченный в печи с овощами</h3>
+<p>.............</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="лосось в сливочно-икорном соусе" data-desc="....................">
+<img src="menu/81.jpg" alt="Лосось в сливочно-икорном соусе">
+<div class="info">
+<h3>Лосось в сливочно-икорном соусе</h3>
+<p>....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="семга в фольге с овощами" data-desc="Манго, авокадо, креветки, черри, руккало">
+<img src="menu/82.jpg" alt="Семга в фольге с овощами">
+<div class="info">
+<h3>Семга в фольге с овощами</h3>
+<p>Манго, авокадо, креветки, черри, руккало</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="лосось по-макейски" data-desc="Говядина, фасоль, шампиньоны, корнишоны, опята, шпинат, кинза, лук зеленый, заправка">
+<img src="menu/83.jpg" alt="Лосось по-макейски">
+<div class="info">
+<h3>Лосось по-Макейски</h3>
+<p>Говядина, фасоль, шампиньоны, корнишоны, опята, шпинат, кинза, лук зеленый, заправка</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="форель с овощами запеченный в печи" data-desc="................">
+<img src="menu/84.jpg" alt="Форель с овощами запеченный в печи">
+<div class="info">
+<h3>Форель с овощами запеченный в печи</h3>
+<p>................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="креветки на сковороде" data-desc=".....................">
+<img src="menu/85.jpg" alt="Креветки на сковороде">
+<div class="info">
+<h3>Креветки на сковороде</h3>
+<p>.....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="садж из баранины" data-desc="Баранина, лук, кабачок, баклажан, картофель, грибы, помидор, болгарский перец, лаваш">
+<img src="menu/86.jpg" alt="Садж из баранины">
+<div class="info">
+<h3>Садж из баранины</h3>
+<p>Баранина, лук, кабачок, баклажан, картофель, грибы, помидор, болгарский перец, лаваш</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="садж из курицы" data-desc="Курица, лук, кабачок, баклажан, картофель, грибы, помидор, болгарский перец, лаваш">
+<img src="menu/87.jpg" alt="Садж из курицы">
+<div class="info">
+<h3>Садж из курицы</h3>
+<p>Курица, лук, кабачок, баклажан, картофель, грибы, помидор, болгарский перец, лаваш</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="садж из телятины" data-desc="Телятина, лук, кабачок, баклажан, картофель, грибы, помидор, болгарский перец, лаваш">
+<img src="menu/88.jpg" alt="Садж из телятины">
+<div class="info">
+<h3>Садж из телятины</h3>
+<p>Телятина, лук, кабачок, баклажан, картофель, грибы, помидор, болгарский перец, лаваш</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="садж ассорти" data-desc="Баранина, курица, телятина, лук, кабачок, баклажан, картофель, грибы, помидор, болгарский перец, лаваш">
+<img src="menu/89.jpg" alt="Садж ассорти">
+<div class="info">
+<h3>Садж «Ассорти»</h3>
+<p>Баранина, курица, телятина, лук, кабачок, баклажан, картофель, грибы, помидор, болгарский перец, лаваш</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="жаркое из баранины" data-desc="Баранина жирная, болгарский перец, картофель, лук, помидор">
+<img src="menu/90.jpg" alt="Жаркое из баранины">
+<div class="info">
+<h3>Жаркое из баранины</h3>
+<p>Баранина жирная, болгарский перец, картофель, лук, помидор</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="баранина запеченная в печи с овощами" data-desc=".....................">
+<img src="menu/91.jpg" alt="Баранина запеченная в печи с овощами">
+<div class="info">
+<h3>Баранина запеченная в печи с овощами</h3>
+<p>.....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="перепелка жареная" data-desc=".....................">
+<img src="menu/92.jpg" alt="Перепелка жареная">
+<div class="info">
+<h3>Перепелка жареная</h3>
+<p>.....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="сладкий плов" data-desc="..........................">
+<img src="menu/93.jpg" alt="Сладкий плов">
+<div class="info">
+<h3>Сладкий плов</h3>
+<p>..........................</p>
+</div>
+</article>
+
+</div>
+</section>
+
+<!— МАНГАЛ —>
+<section class="section">
+<div class="section-title">МАНГАЛ</div>
+<div class="menu-items">
+
+<article class="menu-item" data-name="крылышки" data-desc="....................">
+<img src="menu/94.jpg" alt="Крылышки">
+<div class="info">
+<h3>Крылышки</h3>
+<p>....................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="люля-кебаб" data-desc="...................">
+<img src="menu/95.jpg" alt="Люля-Кебаб">
+<div class="info">
+<h3>Люля-Кебаб</h3>
+<p>...................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="шашлык из баранины" data-desc=".......................">
+<img src="menu/96.jpg" alt="Шашлык из баранины">
+<div class="info">
+<h3>Шашлык из баранины</h3>
+<p>.......................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="шашлык куриный" data-desc="............................">
+<img src="menu/97.jpg" alt="Шашлык куриный">
+<div class="info">
+<h3>Шашлык куриный</h3>
+<p>............................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="грибы на мангале" data-desc="..........................">
+<img src="menu/98.jpg" alt="Грибы на мангале">
+<div class="info">
+<h3>Грибы на мангале</h3>
+<p>..........................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="шашлык говяжий" data-desc="..........................">
+<img src="menu/99.jpg" alt="Шашлык говяжий">
+<div class="info">
+<h3>Шашлык говяжий</h3>
+<p>..........................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="шашлык ассорти" data-desc=".........................">
+<img src="menu/100.jpg" alt="Шашлык ассорти">
+<div class="info">
+<h3>Шашлык ассорти</h3>
+<p>.........................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="овощи на мангале" data-desc="...........................">
+<img src="menu/101.jpg" alt="Овощи на мангале">
+<div class="info">
+<h3>Овощи на мангале</h3>
+<p>...........................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="стейк куриный" data-desc="............................">
+<img src="menu/102.jpg" alt="Стейк куриный">
+<div class="info">
+<h3>Стейк куриный</h3>
+<p>............................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="стейк из лосося" data-desc="...........................">
+<img src="menu/103.jpg" alt="Стейк из лосося">
+<div class="info">
+<h3>Стейк из лосося</h3>
+<p>...........................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="дорадо на мангале" data-desc="............................">
+<img src="menu/104.jpg" alt="Дорадо на мангале">
+<div class="info">
+<h3>Дорадо на мангале</h3>
+<p>............................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="сибас на мангале" data-desc="............................">
+<img src="menu/105.jpg" alt="Сибас на мангале">
+<div class="info">
+<h3>Сибас на мангале</h3>
+<p>............................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="форель на мангале" data-desc=".......................">
+<img src="menu/106.jpg" alt="Форель на мангале">
+<div class="info">
+<h3>Форель на мангале</h3>
+<p>.......................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="стейк миньон" data-desc="..........................">
+<img src="menu/107.jpg" alt="Стейк Миньон">
+<div class="info">
+<h3>Стейк «Миньон»</h3>
+<p>..........................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="стейк рибай без кости" data-desc=".......................">
+<img src="menu/108.jpg" alt="Стейк Рибай без кости">
+<div class="info">
+<h3>Стейк «Рибай без кости»</h3>
+<p>.......................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="стейк томагавк" data-desc="...........................">
+<img src="menu/109.jpg" alt="Стейк Томагавк">
+<div class="info">
+<h3>Стейк «Томагавк»</h3>
+<p>...........................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="стейк рибай" data-desc="...............................">
+<img src="menu/110.jpg" alt="Стейк Рибай">
+<div class="info">
+<h3>Стейк «Рибай»</h3>
+<p>...............................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="стейк ти-бон" data-desc=".............................">
+<img src="menu/111.jpg" alt="Стейк Ти-Бон">
+<div class="info">
+<h3>Стейк «Ти-Бон»</h3>
+<p>.............................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="пистолет" data-desc="Жирный">
+<img src="menu/112.jpg" alt="Пистолет">
+<div class="info">
+<h3>«Пистолет»</h3>
+<p>Жирный</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="чинар большой" data-desc="Стейки Рибай, Ти-бон, Миньон, Томагавк, куриный стейк, перепелка, пистолет, люля, рис, грибы, картофель молодой, овощи маринованные и свежие овощи">
+<img src="menu/113.jpg" alt="Чинар большой">
+<div class="info">
+<h3>Чинар Большой</h3>
+<p>Стейки Рибай, Ти-бон, Миньон, Томагавк, куриный стейк, перепелка, пистолет, люля, рис, грибы, картофель молодой, овощи маринованные и свежие овощи</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="чинар морской" data-desc="Лосось, дорадо, сибас, форель, креветки 24 шт, мидии 30 шт, рис, лимон, молодой картофель, свежие овощи">
+<img src="menu/114.jpg" alt="Чинар морской">
+<div class="info">
+<h3>Чинар Морской</h3>
+<p>Лосось, дорадо, сибас, форель, креветки 24 шт, мидии 30 шт, рис, лимон, молодой картофель, свежие овощи</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="чинар малый" data-desc="Шашлыки баранина, говядина, куриный, пистолет, крылышки, люля, грибы, рис, картофель молодой, овощи маринованные и свежие овощи">
+<img src="menu/115.jpg" alt="Чинар малый">
+<div class="info">
+<h3>Чинар Малый</h3>
+<p>Шашлыки баранина, говядина, куриный, пистолет, крылышки, люля, грибы, рис, картофель молодой, овощи маринованные и свежие овощи</p>
+</div>
+</article>
+
+</div>
+</section>
+    
+<!— НАЦИОНАЛЬНАЯ КУХНЯ —>
+<section class="section">
+<div class="section-title">НАЦИОНАЛЬНАЯ КУХНЯ</div>
+<div class="menu-items">
+
+<article class="menu-item" data-name="б1ар-галнаш" data-desc=".............................">
+<img src="menu/116.jpg" alt="Б1ар-галнаш">
+<div class="info">
+<h3>Б1ар-галнаш</h3>
+<p>.............................</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="бульон" data-desc="">
+<img src="menu/117.jpg" alt="Бульон">
+<div class="info">
+<h3>Бульон</h3>
+<p></p>
+</div>
+</article>
+
+<article class="menu-item" data-name="галушки с антрикотом" data-desc="...............">
+<img src="menu/118.jpg" alt="Галушки с антрикотом">
+<div class="info">
+<h3>Галушки с антрикотом</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="галушки с сушеным мясом" data-desc="...............">
+<img src="menu/119.jpg" alt="Галушки с сушеным мясом">
+<div class="info">
+<h3>Галушки с сушеным мясом</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="галушки с ребром" data-desc="Жирное">
+<img src="menu/120.jpg" alt="Галушки с ребром">
+<div class="info">
+<h3>Галушки с ребром</h3>
+<p>Жирное</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="галушки с бараниной" data-desc="...............">
+<img src="menu/121.jpg" alt="Галушки с бараниной">
+<div class="info">
+<h3>Галушки с бараниной</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="галушки с курицей" data-desc="...............">
+<img src="menu/122.jpg" alt="Галушки с курицей">
+<div class="info">
+<h3>Галушки с курицей</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="галушки с сушеной колбасой" data-desc="...............">
+<img src="menu/123.jpg" alt="Галушки с сушеной колбасой">
+<div class="info">
+<h3>Галушки с сушеной колбасой</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="уьстаг1и корти когти галнаш" data-desc="...............">
+<img src="menu/124.jpg" alt="Уьстаг1и корти когти галнаш">
+<div class="info">
+<h3>Уьстаг1и корти когти галнаш</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="ассорти галнаш на компанию" data-desc="Антрекот, куриное бедро, сушеная колбаса, сушеная говядина, б1ар, галушки ассорти">
+<img src="menu/125.jpg" alt="Ассорти галнаш на компанию">
+<div class="info">
+<h3>Ассорти галнаш на компанию</h3>
+<p>Антрекот, куриное бедро, сушеная колбаса, сушеная говядина, б1ар, галушки ассорти</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="аварский хинкал" data-desc="...............">
+<img src="menu/126.jpg" alt="Аварский хинкал">
+<div class="info">
+<h3>Аварский хинкал</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="сушеное мясо" data-desc="...............">
+<img src="menu/127.jpg" alt="Сушеное мясо">
+<div class="info">
+<h3>Сушеное мясо</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="сушеная колбаса" data-desc="...............">
+<img src="menu/128.jpg" alt="Сушеная колбаса">
+<div class="info">
+<h3>Сушеная колбаса</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="антрикот" data-desc="...............">
+<img src="menu/129.jpg" alt="Антрикот">
+<div class="info">
+<h3>Антрикот</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="курица" data-desc="...............">
+<img src="menu/130.jpg" alt="Курица">
+<div class="info">
+<h3>Курица</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="бешбармак" data-desc="...............">
+<img src="menu/131.jpg" alt="Бешбармак">
+<div class="info">
+<h3>Бешбармак</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="сискал 1 шт" data-desc="...............">
+<img src="menu/132.jpg" alt="Сискал 1 шт">
+<div class="info">
+<h3>Сискал 1 шт</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="сискал с т1о берам" data-desc="...............">
+<img src="menu/133.jpg" alt="Сискал с т1о берам">
+<div class="info">
+<h3>Сискал с т1о берам</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="сискал с начинкой и т1о берам" data-desc="...............">
+<img src="menu/134" alt="Сискал с начинкой и т1о берам">
+<div class="info">
+<h3>Сискал с начинкой и т1о берам</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="хингалш" data-desc="...............">
+<img src="menu/135.jpg" alt="Хингалш">
+<div class="info">
+<h3>Хингалш</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="ч1епалгш" data-desc="...............">
+<img src="menu/136.jpg" alt="Ч1епалгш">
+<div class="info">
+<h3>Ч1епалгш</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="ч1епалгш с мясом и луком" data-desc="...............">
+<img src="menu/137.jpg" alt="Ч1епалгш с мясом и луком">
+<div class="info">
+<h3>Ч1епалгш с мясом и луком</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="ч1епалгш с картошкой" data-desc="...............">
+<img src="menu/138.jpg" alt="Ч1епалгш с картошкой">
+<div class="info">
+<h3>Ч1епалгш с картошкой</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="ч1епалгш с творогом и зеленым луком" data-desc="...............">
+<img src="menu/139.jpg" alt="Ч1епалгш с творогом и зеленым луком">
+<div class="info">
+<h3>Ч1епалгш с творогом и зеленым луком</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="вареники с картошкой" data-desc="...............">
+<img src="menu/140.jpg" alt="Вареники с картошкой">
+<div class="info">
+<h3>Вареники с картошкой</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="вареники с творогом" data-desc="...............">
+<img src="menu/141.jpg" alt="Вареники с творогом">
+<div class="info">
+<h3>Вареники с творогом</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="манты" data-desc="...............">
+<img src="menu/142.jpg" alt="Манты">
+<div class="info">
+<h3>Манты</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="манты узбекские" data-desc="...............">
+<img src="menu/143.jpg" alt="Манты узбекские">
+<div class="info">
+<h3>Манты узбекские</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="пельмени" data-desc="...............">
+<img src="menu/144.jpg" alt="Пельмени">
+<div class="info">
+<h3>Пельмени</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="хьокхам" data-desc="...............">
+<img src="menu/145.jpg" alt="Хьокхам">
+<div class="info">
+<h3>Хьокхам</h3>
+<p>............... </p>
+</div>
+</article>
+
+<article class="menu-item" data-name="пышки с аджикой и домашней сметаной" data-desc="...............">
+<img src="menu/146.jpg" alt="Пышки с аджикой и домашней сметаной">
+<div class="info">
+<h3>Пышки с аджикой и домашней сметаной</h3>
+<p>............... </p>
+</div>
+</article>
+
+</div>
+</section>
+
+<!— ПИРОГИ/ПИЦЦА —>
+<section class="section">
+<div class="section-title">ПИРОГИ/ПИЦЦА</div>
+<div class="menu-items">
+    
+<article class="menu-item" data-name="Осетинский пирог с говядиной" data-desc=".............">
+<img src="menu/147.jpg" alt="Осетинский пирог с говядиной">
+<div class="info">
+<h3>Осетинский пирог с говядиной</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Осетинский пирог с сыром" data-desc=".............">
+<img src="menu/148.jpg" alt="Осетинский пирог с сыром">
+<div class="info">
+<h3>Осетинский пирог с сыром</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Осетинский пирог с зеленью и сыром" data-desc=".............">
+<img src="menu/149.jpg" alt="Осетинский пирог с зеленью и сыром">
+<div class="info">
+<h3>Осетинский пирог с зеленью и сыром</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Осетинский пирог с сыром и картофелем" data-desc=".............">
+<img src="menu/150.jpg" alt="Осетинский пирог с сыром и картофелем">
+<div class="info">
+<h3>Осетинский пирог с сыром и картофелем</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пирог с капустой" data-desc=".............">
+<img src="menu/151.jpg" alt="Пирог с капустой">
+<div class="info">
+<h3>Пирог с капустой</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пирог с курицей картошкой и сыром" data-desc=".............">
+<img src="menu/152.jpg" alt="Пирог с курицей картошкой и сыром">
+<div class="info">
+<h3>Пирог с курицей картошкой и сыром</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца Пепперони" data-desc=".............">
+<img src="menu/153.jpg" alt="Пицца Пепперони">
+<div class="info">
+<h3>Пицца Пепперони</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца 4 сыра" data-desc=".............">
+<img src="menu/154.jpg" alt="Пицца 4 сыра">
+<div class="info">
+<h3>Пицца 4 сыра</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца 4 сезона" data-desc=".............">
+<img src="menu/155.jpg" alt="Пицца 4 сезона">
+<div class="info">
+<h3>Пицца 4 сезона</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца Ассорти" data-desc=".............">
+<img src="menu/156.jpg" alt="Пицца Ассорти">
+<div class="info">
+<h3>Пицца Ассорти</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца Грибная" data-desc=".............">
+<img src="menu/157.jpg" alt="Пицца Грибная">
+<div class="info">
+<h3>Пицца Грибная</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца Куриная" data-desc=".............">
+<img src="menu/158.jpg" alt="Пицца Куриная">
+<div class="info">
+<h3>Пицца Куриная</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца Маргарита" data-desc=".............">
+<img src="menu/159.jpg" alt="Пицца Маргарита">
+<div class="info">
+<h3>Пицца Маргарита</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца Мексиканская" data-desc=".............">
+<img src="menu/160.jpg" alt="Пицца Мексиканская">
+<div class="info">
+<h3>Пицца Мексиканская</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца Мясная" data-desc=".............">
+<img src="menu/161.jpg" alt="Пицца Мясная">
+<div class="info">
+<h3>Пицца Мясная</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца Цезарь" data-desc=".............">
+<img src="menu/162.jpg" alt="Пицца Цезарь">
+<div class="info">
+<h3>Пицца Цезарь</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца Фри" data-desc=".............">
+<img src="menu/163.jpg" alt="Пицца Фри">
+<div class="info">
+<h3>Пицца Фри</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пицца Филадельфия" data-desc=".............">
+<img src="menu/164.jpg" alt="Пицца Филадельфия">
+<div class="info">
+<h3>Пицца Филадельфия</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Хачапури по-аджарски" data-desc=".............">
+<img src="menu/165.jpg" alt="Хачапури по-аджарски">
+<div class="info">
+<h3>Хачапури по-аджарски</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Чизбургер маленький" data-desc=".............">
+<img src="menu/166.jpg" alt="Чизбургер маленький">
+<div class="info">
+<h3>Чизбургер маленький</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Бургер Хурма большой" data-desc=".............">
+<img src="menu/167.jpg" alt="Бургер Хурма большой">
+<div class="info">
+<h3>Бургер Хурма большой</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Комбо" data-desc="Чизбургер, гарнир, соус, 6 наггетсов">
+<img src="menu/168.jpg" alt="Комбо">
+<div class="info">
+<h3>Комбо</h3>
+<p>(Чизбургер, гарнир, соус, 6 наггетсов)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Бургер с вишневым соусом" data-desc=".............">
+<img src="menu/169.jpg" alt="Бургер с вишневым соусом">
+<div class="info">
+<h3>Бургер с вишневым соусом</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Бургер с креветкой" data-desc=".............">
+<img src="menu/170.jpg" alt="Бургер с креветкой">
+<div class="info">
+<h3>Бургер с креветкой</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Пури" data-desc=".............">
+<img src="menu/171.jpg" alt="Пури">
+<div class="info">
+<h3>Пури</h3>
+<p>(.............)</p>
+</div>
+</article>
+
+</div>
+
+<!— Кнопка "Наверх" —>
+<button id="toTopBtn" title="Наверх">↑</button>
+
+<script>
+const searchInput = document.getElementById('search');
+const clearBtn = document.getElementById('clear-btn');
+
+function resetFilter() {
+document.querySelectorAll('.menu-item').forEach(item => item.style.display = '');
+document.querySelectorAll('.section').forEach(section => section.style.display = '');
+}
+
+function applyFilter(value) {
+const filter = value.trim().toLowerCase();
+const sections = document.querySelectorAll('.section');
+sections.forEach(section => {
+let foundInSection = false;
+section.querySelectorAll('.menu-item').forEach(item => {
+const name = (item.getAttribute('data-name') || '').toLowerCase();
+const desc = (item.getAttribute('data-desc') || '').toLowerCase();
+if (!filter || name.includes(filter) || desc.includes(filter)) {
+item.style.display = '';
+foundInSection = true;
+} else {
+item.style.display = 'none';
+}
+});
+section.style.display = foundInSection ? '' : 'none';
+});
+}
+
+searchInput.addEventListener('input', () => {
+const v = searchInput.value;
+clearBtn.style.display = v ? 'flex' : 'none';
+applyFilter(v);
+});
+
+clearBtn.addEventListener('click', () => {
+searchInput.value = '';
+clearBtn.style.display = 'none';
+resetFilter();
+searchInput.focus();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+document.querySelectorAll('.menu-item').forEach(item => {
+const name = item.getAttribute('data-name');
+if (name) {
+const fileName = "menu/" + name.toLowerCase().replace(/\s+/g, '_') + '.jpg';
+const img = item.querySelector('img');
+if (img) {
+img.src = fileName;
+img.alt = name;
+}
+}
+});
+});
+
+// Кнопка "Наверх"
+const toTopBtn = document.getElementById("toTopBtn");
+window.onscroll = function() {
+if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+toTopBtn.style.display = "block";
+} else {
+toTopBtn.style.display = "none";
+}
+};
+toTopBtn.addEventListener("click", () => {
+window.scrollTo({ top: 0, behavior: "smooth" });
+});
+</script>
+</body>
+</html>
