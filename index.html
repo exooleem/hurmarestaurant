@@ -4,254 +4,277 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ресторан Хурма</title>
-<link href="fonts.googleapis.com/css2?famil..." rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
 <style>
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; padding: 0; }
 
-/* Фиксированный фон через псевдоэлемент */
+/* ФИКСИРОВАННЫЙ ФОН (оптимизирован) */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("фон.jpg") center center no-repeat;
-    background-size: cover;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url("фон.jpg") center center / cover no-repeat;
     z-index: -1;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
-/* Основной стиль сайта */
+/* ОСНОВНОЙ СТИЛЬ */
 body {
-    color: #fff; /* Цвет текста */
-    font-family: "Roboto", "Helvetica", Arial, sans-serif; /* Основной шрифт */
-    font-size: 16px; /* Размер текста по умолчанию */
-    line-height: 1.5; /* Межстрочный интервал */
-    background-color: #fff; /* Фоновый цвет сайта */
+    color: #fff;
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #000; /* подложка на случай, если фон не загрузится */
     margin: 0;
     padding: 0;
 }
 
-/* Все заголовки и параграфы на сайте */
+/* ГЛОБАЛЬНЫЕ ТЕКСТОВЫЕ ЭЛЕМЕНТЫ */
 h1, h2, h3, h4, h5, h6, p, div, span, article, section, li {
     font-family: "Roboto", "Helvetica", Arial, sans-serif;
     color: #fff;
 }
 
-/* Стиль для меню */
+/* МЕНЮ */
 .menu-item h3 {
-    font-family: "Roboto", "Helvetica", Arial, sans-serif;
-    color: #fff;
-    font-size: 18px; /* Размер названия блюда */
-    margin: 0 0 5px 0;
+    font-size: 18px;
+    margin: 0 0 5px;
 }
 
-.footer {
-text-align: center;
-padding: 20px 0;
-color: white; /* если фон сайта тёмный */
-font-size: 14px;
-opacity: 0.8;
-}
-    
 .menu-item p {
-    font-family: "Roboto", "Helvetica", Arial, sans-serif;
-    color: #fff;
-    font-size: 14px; /* Размер описания блюда */
+    font-size: 14px;
     margin: 0;
 }
 
-/* Секции меню */
+/* ПОДВАЛ */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    color: white;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* СЕКЦИИ */
 .section-title {
-    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    font-family: "Playfair Display", serif;
     color: #fff;
     font-size: 24px;
     margin-bottom: 20px;
+    letter-spacing: 1.2px;
 }
 
-/* Дополнительно для ссылок и кнопок */
+/* ССЫЛКИ И КНОПКИ */
 a, button {
     font-family: "Roboto", "Helvetica", Arial, sans-serif;
     color: #fff;
 }
+
+/* КОНТЕЙНЕР */
 .container {
-width: 100%;
-max-width: 900px;
-margin: 0 auto;
-padding: 20px 16px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 16px;
 }
 
+/* ШАПКА */
 header {
-text-align: center;
-margin-bottom: 32px;
+    text-align: center;
+    margin-bottom: 32px;
 }
+
 .top-text {
-font-size: 8px;
-font-weight: 300;
-text-transform: uppercase;
-letter-spacing: 8px;
-opacity: 0.9;
-margin-bottom: 6px;
-margin-top: -10px;
+    font-size: 8px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    opacity: 0.9;
+    margin-bottom: 6px;
+    margin-top: -10px;
 }
 
 /* ЛОГОТИП */
 .restaurant-logo img {
-max-width: 320px;
-height: auto;
-display: block;
-margin: 0 auto 16px;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    margin: 0 auto 16px;
 }
+
+/* КОНТАКТЫ */
 .contact-info {
-text-align: center;
-margin-bottom: 32px;
-font-size: 14px;
-letter-spacing: 0.5px;
-opacity: 0.9;
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
 }
+
+/* ПОИСК */
 .search-container {
-width: 100%;
-max-width: 480px;
-margin: 0 auto 16px;
-position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto 16px;
+    position: relative;
 }
+
 .search-bar {
-width: 100%;
-padding: 10px 36px 10px 14px;
-border-radius: 30px;
-border: 1px solid rgba(255,255,255,0.12);
-background: rgba(0,0,0,0.4);
-color: #fff;
-font-size: 16px;
-letter-spacing: 0.5px;
-outline: none;
+    width: 100%;
+    padding: 10px 36px 10px 14px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
 }
+
+.search-bar:focus {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(0,0,0,0.6);
+}
+
 .search-bar::placeholder { color: rgba(255,255,255,0.6); }
+
 #clear-btn {
-position: absolute;
-right: 12px;
-top: 50%;
-transform: translateY(-50%);
-font-size: 18px;
-color: #fff;
-background: none;
-border: none;
-cursor: pointer;
-display: none;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
 }
-/* Секции */
+
+/* СЕКЦИИ */
 .section { padding: 26px 0; text-align: center; }
-.section-title {
-font-family: "Playfair Display", serif;
-font-size: 20px;
-margin-bottom: 14px;
-font-weight: 600;
-letter-spacing: 1.5px;
-}
 
+/* СЕТКА МЕНЮ */
 .menu-items {
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-gap: 20px;
-justify-items: center;
-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+    width: 100%;
 }
 
+/* ЭЛЕМЕНТ МЕНЮ */
 .menu-item {
-width: 100%;
-max-width: 400px;
-background: rgba(0,0,0,0.4);
-border: 1px solid rgba(200,169,81,0.2);
-border-radius: 16px;
-overflow: hidden;
-box-shadow: 0 10px 28px rgba(0,0,0,0.3);
-transition: transform 0.25s ease, box-shadow 0.25s ease;
-display: flex;
-flex-direction: column;
-}
-.menu-item:hover {
-transform: translateY(-6px);
-box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-}
-.menu-item img {
-width: 100%;
-height: 180px;
-object-fit: cover;
-border-radius: 12px 12px 0 0;
-}
-.info {
-padding: 12px 16px;
-display: flex;
-flex-direction: column;
-gap: 2px;
-text-align: left;
-}
-.info h3 {
-margin: 0;
-font-family: "Playfair Display", serif;
-font-size: 14px;
-letter-spacing: 1px;
-color: #fff;
-}
-.info p {
-margin: 0;
-font-size: 8px;
-letter-spacing: 1px;
-color: rgba(255,255,255,0.85);
-line-height: 1.2;
+    width: 100%;
+    max-width: 400px;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(200,169,81,0.25);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
 }
 
-/* Кнопка "Наверх" */
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    display: block;
+}
+
+/* ИНФО */
+.info {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
+}
+
+.info h3 {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.info p {
+    margin: 0;
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.2;
+}
+
+/* КНОПКА "НАВЕРХ" */
 #toTopBtn {
-display: none;
-position: fixed;
-bottom: 40px;
-right: 30px;
-z-index: 99;
-width: 50px;
-height: 50px;
-font-size: 24px;
-background-color: rgba(0,0,0,0.6);
-color: #fff;
-border: none;
-border-radius: 50%;
-cursor: pointer;
-transition: background-color 0.3s;
-display: flex;
-justify-content: center;
-align-items: center;
-padding: 0;
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    z-index: 99;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
 }
 
 #toTopBtn:hover {
-background-color: rgba(0,0,0,0.6); 
+    background-color: rgba(0,0,0,0.75); 
 }
 
 /* АДАПТИВ */
-max-width: 480px {
-.restaurant-logo img { max-width: 180px; }
-.section-title { font-size: 18px; }
-.menu-item img { height: 140px; }
-.info h3 { font-size: 12px; letter-spacing: 1px; }
-.info p { font-size: 7px; letter-spacing: 1px; }
+@media (max-width: 480px) {
+    .restaurant-logo img { max-width: 180px; }
+    .section-title { font-size: 18px; }
+    .menu-item img { height: 140px; }
+    .info h3 { font-size: 12px; letter-spacing: 1px; }
+    .info p { font-size: 7px; letter-spacing: 1px; }
+    .menu-items { grid-template-columns: 1fr; }
 }
 </style>
 </head>
+
 <body>
 <div class="container">
 <header>
-<div class="top-text">Ресторан</div>
-<div class="restaurant-logo">
-<img src="лого.png" alt="Ресторан Хурма">
-</div>
-<div class="search-container">
-<input id="search" class="search-bar" type="text" placeholder="Поиск блюда..." aria-label="Поиск блюда">
-<button id="clear-btn" title="Очистить">✖</button>
-</div>
-<div class="contact-info">
-пр-т Мохаммеда Али 2/5, Тел: +7 (928) 943-76-76
-</div>
+    <div class="top-text">Ресторан</div>
+    <div class="restaurant-logo">
+        <img src="лого.png" alt="Ресторан Хурма" loading="lazy">
+    </div>
+
+    <div class="search-container">
+        <input id="search" class="search-bar" type="text" placeholder="Поиск блюда..." aria-label="Поиск блюда">
+        <button id="clear-btn" title="Очистить">✖</button>
+    </div>
+
+    <div class="contact-info">
+        пр-т Мохаммеда Али 2/5, Тел: +7 (928) 943-76-76
+    </div>
 </header>
 
 <!— САЛАТЫ —>
