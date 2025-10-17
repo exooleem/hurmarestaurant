@@ -160,6 +160,14 @@ header {
     display: none;
 }
 
+/* КНОПКИ ПОД ПОИСКОМ */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px; /* расстояние между кнопками */
+    margin: 20px 0 40px; /* отступы сверху и снизу */
+}
+
 /* СЕКЦИИ */
 .section { padding: 26px 0; text-align: center; }
 
@@ -274,6 +282,11 @@ header {
 <div class="search-container">
 <input id="search" class="search-bar" type="text" placeholder="Поиск блюда..." aria-label="Поиск блюда">
 <button id="clear-btn" title="Очистить">✖</button>
+</div>
+
+<div class="action-buttons">
+<button class="btn">Бронь стола</button>
+<button class="btn">Доставка</button>
 </div>
 
 <div class="contact-info">
