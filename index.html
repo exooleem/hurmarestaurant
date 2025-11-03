@@ -26,10 +26,8 @@ body {
     font-size: 16px;
     line-height: 1.5;
     background-color: #000;
-    margin: 0 auto; /* Центрируем сайт */
+    margin: 0;
     padding: 0;
-    max-width: 480px; /* как экран телефона */
-    background-attachment: fixed;
 }
 
 /* ГЛОБАЛЬНЫЕ ТЕКСТОВЫЕ ЭЛЕМЕНТЫ */
@@ -69,16 +67,6 @@ h1, h2, h3, h4, h5, h6, p, div, span, article, section, li, a, button {
     color: #fff;
     font-size: 24px;
     margin-bottom: 20px;
-    letter-spacing: 1.8px;
-}
-
-/* Названия разделов */
-.section-title {
-    text-align: center;    /* центрирует текст */
-    display: block;        /* чтобы блок занимал всю ширину */
-    margin: 0 auto 20px;   /* сверху 0, снизу 20px, по бокам авто */
-    color: #fff;
-    font-size: 24px;
     letter-spacing: 1.8px;
 }
 
@@ -172,38 +160,8 @@ header {
     display: none;
 }
 
-/* 🔽 ДОБАВЛЕНО — НАВИГАЦИЯ ПО РАЗДЕЛАМ 🔽 */
-.sections-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 28px;
-}
-.sections-nav a {
-    text-decoration: none;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 13px;
-    transition: all 0.3s ease;
-    background: rgba(0,0,0,0.4);
-}
-.sections-nav a:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.5);
-}
-
-/* плавная прокрутка */
-html, body {
-    scroll-behavior: smooth;
-}
-
 /* СЕКЦИИ */
-.section {
-    padding: 50px 20px;
-    text-align: center; /* для заголовка раздела */
+.section { padding: 26px 0; text-align: center; }
 
 /* СЕТКА МЕНЮ */
 .menu-items {
@@ -322,25 +280,9 @@ html, body {
 пр-т Мохаммеда Али 2/5, Тел: +7 (928) 943-76-76
 </div>
 </header>
-
-<!-- 🔽 ДОБАВЛЕНО — НАВИГАЦИЯ ПО РАЗДЕЛАМ -->
-<nav class="sections-nav">
-    <a href="#salads">Салаты</a>
-    <a href="#soups">Супы</a>
-    <a href="#spaghetti">Спагетти</a>
-    <a href="#main">Вторые блюда</a>
-    <a href="#mangal">Мангал</a>
-    <a href="#national">Национальная кухня</a>
-    <a href="#pies">Пироги / Пицца</a>
-    <a href="#rolls">Роллы</a>
-    <a href="#hotrolls">Роллы (горячие)</a>
-    <a href="#sets">Сеты</a>
-    <a href="#sides">Гарниры</a>
-    <a href="#drinks">Напитки</a>
-</nav>
-
+    
 <!— САЛАТЫ —>
-<section id="salads" class="section">
+<section class="section">
 <div class="section-title">САЛАТЫ</div>
 <div class="menu-items">
 
@@ -596,7 +538,7 @@ html, body {
 </section>
 
 <!— СУПЫ —>
-<section id="soups" class="section">
+<section class="section">
 <div class="section-title">СУПЫ</div>
 <div class="menu-items">
 
@@ -708,7 +650,7 @@ html, body {
 </section>
 
 <!— СПАГЕТТИ —>
-<section id="spaghetti" class="section">
+<section class="section">
 <div class="section-title">СПАГЕТТИ</div>
 <div class="menu-items">
 
@@ -788,7 +730,7 @@ html, body {
 </section>
 
 <!— ВТОРЫЕ БЛЮДА —>
-<section id="main" class="section">
+<section class="section">
 <div class="section-title">ВТОРЫЕ БЛЮДА</div>
 <div class="menu-items">
 
@@ -1116,7 +1058,7 @@ html, body {
 </section>
 
 <!— МАНГАЛ —>
-<section id="mangal" class="section">
+<section class="section">
 <div class="section-title">МАНГАЛ</div>
 <div class="menu-items">
 
@@ -1300,7 +1242,7 @@ html, body {
 </section>
     
 <!— НАЦИОНАЛЬНАЯ КУХНЯ —>
-<section id="national" class="section">
+<section class="section">
 <div class="section-title">НАЦИОНАЛЬНАЯ КУХНЯ</div>
 <div class="menu-items">
 
@@ -1556,7 +1498,7 @@ html, body {
 </section>
 
 <!— ПИРОГИ/ПИЦЦА —>
-<section id="pies" class="section">
+<section class="section">
 <div class="section-title">ПИРОГИ/ПИЦЦА</div>
 <div class="menu-items">
     
@@ -1764,7 +1706,7 @@ html, body {
 </section>
 
 <!— РОЛЛЫ —>
-<section id="rolls" class="section">
+<section class="section">
 <div class="section-title">РОЛЛЫ</div>
 <div class="menu-items">
 
@@ -1940,7 +1882,7 @@ html, body {
 </section>
 
 <!— РОЛЛЫ (ГОРЯЧИЕ) —>
-<section id="hotrolls" class="section">
+<section class="section">
 <div class="section-title">РОЛЛЫ (ГОРЯЧИЕ)</div>
 <div class="menu-items">
 
@@ -2132,7 +2074,7 @@ html, body {
 </section>
 
 <!— СЕТЫ —>
-<section id="sets" class="section">
+<section class="section">
 <div class="section-title">СЕТЫ</div>
 <div class="menu-items">
 
@@ -2195,8 +2137,112 @@ html, body {
 </div>
 </section>
 
+<!— СОУСЫ —>
+<section class="section">
+<div class="section-title">СОУСЫ</div>
+<div class="menu-items">
+
+<article class="menu-item" data-name="Спайси" data-desc="">
+<img src="menu/223.jpg" alt="Спайси">
+<div class="info">
+<h3>Спайси</h3>
+<p>соус</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Тар-тар" data-desc="">
+<img src="menu/224.jpg" alt="Тар-тар">
+ <div class="info">
+<h3>Тар-тар</h3>
+<p>соус</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Аджика" data-desc="">
+<img src="menu/225.jpg" alt="Аджика">
+<div class="info">
+<h3>Аджика</h3>
+<p>острый соус</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Наршараб" data-desc="">
+<img src="menu/226.jpg" alt="Наршараб">
+<div class="info">
+<h3>Наршараб</h3>
+<p>гранатовый соус</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Горчица" data-desc="">
+<img src="menu/227.jpg" alt="Горчица">
+<div class="info">
+<h3>Горчица</h3>
+<p>соус</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Сырный соус" data-desc="">
+<img src="menu/228.jpg" alt="Сырный соус">
+<div class="info">
+<h3>Сырный соус</h3>
+<p>соус</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Шашлычный кетчуп" data-desc="">
+<img src="menu/229.jpg" alt="Шашлычный кетчуп">
+<div class="info">
+<h3>Шашлычный кетчуп</h3>
+<p>соус к мясу</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Т1О Берам" data-desc="">
+<img src="menu/230.jpg" alt="Т1О Берам">
+<div class="info">
+<h3>Т1о Берам</h3>
+<p>Сметана с творогом</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Сметана" data-desc="">
+<img src="menu/231.jpg" alt="Сметана">
+<div class="info">
+<h3>Сметана</h3>
+<p>традиционная</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Сметана домашняя" data-desc="">
+<img src="menu/232.jpg" alt="Сметана домашняя">
+<div class="info">
+<h3>Сметана домашняя</h3>
+<p>(густая, натуральная)</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Кимчи" data-desc="">
+<img src="menu/233.jpg" alt="Кимчи">
+<div class="info">
+<h3>Кимчи</h3>
+<p>острый</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="Кисло-сладкий соус" data-desc="">
+<img src="menu/234.jpg" alt="Кисло-сладкий соус">
+ <div class="info">
+<h3>Кисло-сладкий соус</h3>
+<p>соус к мясу и роллам</p>
+</div>
+</article>
+
+</div>
+</section>
+
 <!— ГАРНИРЫ —>
-<section id="sides" class="section">
+<section class="section">
 <div class="section-title">ГАРНИРЫ</div>
 <div class="menu-items">
 
@@ -2279,95 +2325,7 @@ html, body {
 <p>............</p>
 </div>
 </article>
-
-</div>
-</section>
-
-<!— НАПИТКИ —>
-<section id="drinks" class="section">
-<div class="section-title">НАПИТКИ</div>
-<div class="menu-items">
-
-<article class="menu-item" data-name="Картофель по-деревенски" data-desc="">
-<img src="menu/235.jpg" alt="Картофель по-деревенски">
-<div class="info">
-<h3>Картофель по-деревенски</h3>
-<p>............</p>
-</div>
-</article>
-
-<article class="menu-item" data-name="Картофель фри" data-desc="">
-<img src="menu/236.jpg" alt="Картофель фри">
-<div class="info">
-<h3>Картофель фри</h3>
-<p>............</p>
-</div>
-</article>
-
-<article class="menu-item" data-name="Рис" data-desc="">
-<img src="menu/237.jpg" alt="Рис">
-<div class="info">
-<h3>Рис</h3>
-<p>............</p>
-</div>
-</article>
-
-<article class="menu-item" data-name="Картофельное пюре" data-desc="">
-<img src="menu/238.jpg" alt="Картофельное пюре">
-<div class="info">
-<h3>Картофельное пюре</h3>
-<p>............</p>
-</div>
-</article>
-
-<article class="menu-item" data-name="Булгур в сливочном соусе" data-desc="">
-<img src="menu/239.jpg" alt="Булгур в сливочном соусе">
-<div class="info">
-<h3>Булгур в сливочном соусе</h3>
-<p>............</p>
-</div>
-</article>
-
-<article class="menu-item" data-name="Гречка" data-desc="">
-<img src="menu/240.jpg" alt="Гречка">
-<div class="info">
-<h3>Гречка</h3>
-<p>............</p>
-</div>
-</article>
-
-<article class="menu-item" data-name="Картофель Айдахо" data-desc="">
-<img src="menu/241.jpg" alt="Картофель Айдахо">
-<div class="info">
-<h3>Картофель Айдахо</h3>
-<p>............<p>
-</div>
-</article>
-
-<article class="menu-item" data-name="Картофель Шатой" data-desc="">
-<img src="menu/242.jpg" alt="Картофель Шатой">
-<div class="info">
-<h3>Картофель Шатой</h3>
-<p>............</p>
-</div>
-</article>
-
-<article class="menu-item" data-name="Шампиньоны запеченные в печи с сыром" data-desc="">
-<img src="menu/243.jpg" alt="Шампиньоны запеченные в печи с сыром">
-<div class="info">
-<h3>Шампиньоны запечённые в печи с сыром</h3>
-<p>............</p>
-</div>
-</article>
-
-<article class="menu-item" data-name="Брокколи" data-desc="">
-<img src="menu/244.jpg" alt="Брокколи">
-<div class="info">
-<h3>Брокколи</h3>
-<p>............</p>
-</div>
-</article>
-
+    
 </div>
 
 <!— Кнопка "Наверх" —>
@@ -2442,26 +2400,6 @@ window.scrollTo({ top: 0, behavior: "smooth" });
 });
 </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Если URL содержит хеш, убираем его сразу
-  if (window.location.hash) {
-    history.replaceState(null, null, window.location.pathname);
-  }
-
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault(); // отменяем стандартный переход
-      const targetId = this.getAttribute('href').substring(1);
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
-});
-</script>
-    
 <p>© 2025 Ресторан Хурма.</p>
 </footer>
 
