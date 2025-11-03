@@ -160,6 +160,34 @@ header {
     display: none;
 }
 
+/* 🔽 ДОБАВЛЕНО — НАВИГАЦИЯ ПО РАЗДЕЛАМ 🔽 */
+.sections-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+.sections-nav a {
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    background: rgba(0,0,0,0.4);
+}
+.sections-nav a:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.5);
+}
+
+/* плавная прокрутка */
+html, body {
+    scroll-behavior: smooth;
+}
+    
 /* СЕКЦИИ */
 .section { padding: 26px 0; text-align: center; }
 
@@ -280,9 +308,24 @@ header {
 пр-т Мохаммеда Али 2/5, Тел: +7 (928) 943-76-76
 </div>
 </header>
+
+<nav class="sections-nav">
+    <a href="#salads">Салаты</a>
+    <a href="#soups">Супы</a>
+    <a href="#spaghetti">Спагетти</a>
+    <a href="#main">Вторые блюда</a>
+    <a href="#mangal">Мангал</a>
+    <a href="#national">Национальная кухня</a>
+    <a href="#pies">Пироги / Пицца</a>
+    <a href="#rolls">Роллы</a>
+    <a href="#hotrolls">Роллы (горячие)</a>
+    <a href="#sets">Сеты</a>
+    <a href="#garnishes">Гарниры</a>
+    <a href="#drinks">Лимонады</a>
+</nav>
     
 <!— САЛАТЫ —>
-<section class="section">
+<section id="salads" class="section">
 <div class="section-title">САЛАТЫ</div>
 <div class="menu-items">
 
@@ -538,7 +581,7 @@ header {
 </section>
 
 <!— СУПЫ —>
-<section class="section">
+<section id="soups" class="section">
 <div class="section-title">СУПЫ</div>
 <div class="menu-items">
 
@@ -650,7 +693,7 @@ header {
 </section>
 
 <!— СПАГЕТТИ —>
-<section class="section">
+<section id="spaghetti" class="section">
 <div class="section-title">СПАГЕТТИ</div>
 <div class="menu-items">
 
@@ -730,7 +773,7 @@ header {
 </section>
 
 <!— ВТОРЫЕ БЛЮДА —>
-<section class="section">
+<section id="main" class="section">
 <div class="section-title">ВТОРЫЕ БЛЮДА</div>
 <div class="menu-items">
 
@@ -1058,7 +1101,7 @@ header {
 </section>
 
 <!— МАНГАЛ —>
-<section class="section">
+<section id="mangal" class="section">
 <div class="section-title">МАНГАЛ</div>
 <div class="menu-items">
 
@@ -1242,7 +1285,7 @@ header {
 </section>
     
 <!— НАЦИОНАЛЬНАЯ КУХНЯ —>
-<section class="section">
+<section id="national" class="section">
 <div class="section-title">НАЦИОНАЛЬНАЯ КУХНЯ</div>
 <div class="menu-items">
 
@@ -1498,7 +1541,7 @@ header {
 </section>
 
 <!— ПИРОГИ/ПИЦЦА —>
-<section class="section">
+<section id="pies" class="section">
 <div class="section-title">ПИРОГИ/ПИЦЦА</div>
 <div class="menu-items">
     
@@ -1706,7 +1749,7 @@ header {
 </section>
 
 <!— РОЛЛЫ —>
-<section class="section">
+<section id="rolls" class="section">
 <div class="section-title">РОЛЛЫ</div>
 <div class="menu-items">
 
@@ -1882,7 +1925,7 @@ header {
 </section>
 
 <!— РОЛЛЫ (ГОРЯЧИЕ) —>
-<section class="section">
+<section id="hotrolls" class="section">
 <div class="section-title">РОЛЛЫ (ГОРЯЧИЕ)</div>
 <div class="menu-items">
 
@@ -2074,7 +2117,7 @@ header {
 </section>
 
 <!— СЕТЫ —>
-<section class="section">
+<section id="sets" class="section">
 <div class="section-title">СЕТЫ</div>
 <div class="menu-items">
 
@@ -2138,7 +2181,7 @@ header {
 </section>
 
 <!— ГАРНИРЫ —>
-<section class="section">
+<section id="garnishes" class="section">
 <div class="section-title">ГАРНИРЫ</div>
 <div class="menu-items">
 
@@ -2226,7 +2269,7 @@ header {
 </section>
 
 <!— ЛИМОНАДЫ —>
-<section class="section">
+<section id="drinks" class="section">
 <div class="section-title">ЛИМОНАДЫ</div>
 <div class="menu-items">
 
