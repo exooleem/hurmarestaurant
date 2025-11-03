@@ -2444,41 +2444,33 @@ window.scrollTo({ top: 0, behavior: "smooth" });
 </script>
 
 <script>
-// Плавный скролл по ссылкам якоря
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const targetEl = document.getElementById(targetId);
-    if (targetEl) {
-      targetEl.scrollIntoView({ behavior: "smooth" });
-      // Добавляем хеш в адрес, чтобы скролл был виден
-      history.pushState({ anchor: targetId }, '', '#' + targetId);
+document.addEventListener("DOMContentLoaded", function() {
+  // Если URL содержит якорь при загрузке
+  const hash = window.location.hash;
+  if (hash) {
+    // Прокручиваем к разделу без скачков
+    const target = document.querySelector(hash);
+    if (target) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: "smooth" });
+        // Убираем хеш из адресной строки
+        history.replaceState(null, null, window.location.pathname);
+      }, 50);
     }
+  }
+
+  // Обработчик для всех ссылок якорей
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+        history.replaceState(null, null, window.location.pathname);
+      }
+    });
   });
-});
-
-// При загрузке страницы: убираем хеш и возвращаем на главную
-window.addEventListener('load', () => {
-  if (window.location.hash) {
-    // Скроллим к разделу на секунду
-    const targetEl = document.querySelector(window.location.hash);
-    if (targetEl) targetEl.scrollIntoView();
-    
-    // Через небольшую задержку очищаем хеш
-    setTimeout(() => {
-      history.replaceState(null, null, window.location.pathname);
-    }, 50); // задержка нужна, чтобы скролл успел произойти
-  }
-});
-
-// При нажатии кнопки "Назад"
-window.addEventListener('popstate', () => {
-  // Если URL содержит хеш, но нужно вернуть на главную
-  if (window.location.hash) {
-    history.replaceState(null, null, window.location.pathname);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
 });
 </script>
 
