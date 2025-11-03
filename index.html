@@ -2462,6 +2462,21 @@ window.scrollTo({ top: 0, behavior: "smooth" });
 });
 </script>
 
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // отменяем стандартный переход
+    const targetId = this.getAttribute('href').substring(1);
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: "smooth" });
+      // удаляем хеш из адресной строки
+      history.replaceState(null, null, ' ');
+    }
+  });
+});
+</script>
+    
 <p>© 2025 Ресторан Хурма.</p>
 </footer>
 
