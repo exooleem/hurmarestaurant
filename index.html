@@ -2444,6 +2444,11 @@ window.scrollTo({ top: 0, behavior: "smooth" });
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  // Если URL содержит хеш, убираем его сразу
+  if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname);
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault(); // отменяем стандартный переход
@@ -2451,8 +2456,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
         targetEl.scrollIntoView({ behavior: "smooth" });
-        // удаляем хеш из адресной строки
-        history.replaceState(null, null, window.location.pathname);
       }
     });
   });
