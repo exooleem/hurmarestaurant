@@ -2444,30 +2444,18 @@ window.scrollTo({ top: 0, behavior: "smooth" });
 </script>
 
 <script>
+// Плавная прокрутка по якорным ссылкам без изменения URL
 document.addEventListener("DOMContentLoaded", function() {
-  // Если URL содержит якорь при загрузке
-  const hash = window.location.hash;
-  if (hash) {
-    // Прокручиваем к разделу без скачков
-    const target = document.querySelector(hash);
-    if (target) {
-      setTimeout(() => {
-        target.scrollIntoView({ behavior: "smooth" });
-        // Убираем хеш из адресной строки
-        history.replaceState(null, null, window.location.pathname);
-      }, 50);
-    }
-  }
-
-  // Обработчик для всех ссылок якорей
   document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetEl = document.querySelector(targetId);
+    link.addEventListener("click", function(e) {
+      e.preventDefault(); // отключаем переход с хэшем
+      const targetId = this.getAttribute("href").substring(1);
+      const targetEl = document.getElementById(targetId);
       if (targetEl) {
-        targetEl.scrollIntoView({ behavior: "smooth" });
-        history.replaceState(null, null, window.location.pathname);
+        targetEl.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
       }
     });
   });
